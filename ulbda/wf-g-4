@@ -1,0 +1,9 @@
+'olena-binarize -I OCR-D-IMG -O OCR-D-BIN' \
+'anybaseocr-crop -I OCR-D-BIN -O OCR-D-CROP' \
+'cis-ocropy-deskew -I OCR-D-CROP -O OCR-D-DESKEW -P level-of-operation page' \
+'anybaseocr-crop -I OCR-D-DESKEW -O OCR-D-DESKEW-CROP' \
+'cis-ocropy-segment -I OCR-D-DESKEW-CROP -O OCR-D-PAGE-SEG -P level-of-operation page' \
+'cis-ocropy-deskew -I OCR-D-PAGE-SEG -O OCR-D-REG-DESKEW -P level-of-operation region' \
+'cis-ocropy-segment -I OCR-D-REG-DESKEW -O OCR-D-REGION-SEG -P level-of-operation region' \
+'cis-ocropy-dewarp -I OCR-D-REGION-SEG -O OCR-D-LINE-DEWARP' \
+'tesserocr-recognize -I OCR-D-LINE-DEWARP -O OCR-D-OCR -P model Latin'
